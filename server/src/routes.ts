@@ -6,6 +6,7 @@ const classesControllers = new ClassesControllers;
 
 
 routes.post('/classes', classesControllers.create);
+routes.get('/classes', classesControllers.index);
 
 
 
