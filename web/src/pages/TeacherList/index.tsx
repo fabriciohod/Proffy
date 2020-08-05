@@ -8,7 +8,7 @@ import api from '../../services/api';
 
 function TeacherList ()
 {
-    const [teacherList, setTeachetList] = useState([]);
+    const [teacherList, setTeacherList] = useState([]);
 
     const [subject, setSubject] = useState('');
     const [week_day, setWeek_day] = useState('');
@@ -24,7 +24,8 @@ function TeacherList ()
                 time,
             }
         });
-        setTeachetList(res.data);
+        console.log(res.data)
+        setTeacherList(res.data);
     }
 
     return (
@@ -43,6 +44,7 @@ function TeacherList ()
                             { value: 'Matemática', label: 'Matemática' },
                             { value: 'Física', label: 'Física' },
                             { value: 'Química', label: 'Química' },
+                            { value: 'Historia', label: 'Historia' },
                             { value: 'Programação', label: 'Programação' },
                         ]}
                     />

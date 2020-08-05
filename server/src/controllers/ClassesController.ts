@@ -19,7 +19,8 @@ export default class ClassController
         const time = filters.time as string;
 
         if (!filters.time || !filters.subject || !filters.week_day) {
-            return res.status(400).json({ error: "Missing filters to search classes" });
+            return res.status(400)
+            .json({ error: "Missing filters to search classes" });
         }
 
         const timeInMinutes = covertHourToMinutes(time);
@@ -32,7 +33,7 @@ export default class ClassController
                     .whereRaw('`class_schedule`.`class_id` = `classes`.`id`')
                     .whereRaw('`class_schedule`.`week_day` = ??', [Number(week_day)])
                     .whereRaw('`class_schedule`.`from` <= ??', [timeInMinutes])
-                    .whereRaw('`class_schedule`.`from` > ??', [timeInMinutes]);
+                    .whereRaw('`class_schedule`.`to` > ??', [timeInMinutes]);
             })
             .where('classes.subject', '=', subject)
             .join('users', 'classes.user_id', '=', 'users.id')

@@ -114,6 +114,7 @@ function TeacherForm ()
                                 { value: 'Matemática', label: 'Matemática' },
                                 { value: 'Física', label: 'Física' },
                                 { value: 'Química', label: 'Química' },
+                                { value: 'Historia', label: 'Historia' },
                                 { value: 'Programação', label: 'Programação' },
                             ]}
                         />
