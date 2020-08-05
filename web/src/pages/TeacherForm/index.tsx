@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PageHeader from '../../components/PageHeader';
 import Input from '../../components/Input';
 import warningIcon from '../../assets/images/icons/warning.svg';
@@ -6,9 +6,20 @@ import TextArea from '../../components/TextArea';
 import Select from '../../components/Select';
 import './styles.css';
 
-
 function TeacherForm ()
 {
+    const [scheduleItems, setScheduleItems] = useState([
+        { week_day: 0, from: '', to: '', }
+    ]);
+    
+    function addNewScheduleItem ()
+    {
+        setScheduleItems([
+            ...scheduleItems,
+            { week_day: 0, from: '', to: '', }
+        ]);
+    }
+
     return (
         <div id="page-teacher-form" className="container">
             <PageHeader
@@ -28,23 +39,23 @@ function TeacherForm ()
                     <legend>Sobre a aula</legend>
                     <Select
                         name="subject"
-                        label="Matéria" 
+                        label="Matéria"
                         options={[
-                            {value: 'Artes', label:'Artes'},
-                            {value: 'Biologia', label:'Biologia'},
-                            {value: 'Ciencia', label:'Ciência'},
-                            {value: 'Matematica', label:'Matemática'},
-                            {value: 'Fisica', label:'Física'},
-                            {value: 'Quimica', label:'Química'},
-                            {value: 'Programacao', label:'Programação'},
+                            { value: 'Artes', label: 'Artes' },
+                            { value: 'Biologia', label: 'Biologia' },
+                            { value: 'Ciencia', label: 'Ciência' },
+                            { value: 'Matematica', label: 'Matemática' },
+                            { value: 'Fisica', label: 'Física' },
+                            { value: 'Quimica', label: 'Química' },
+                            { value: 'Programacao', label: 'Programação' },
                         ]}
-                        />
+                    />
                     <Input name="cost" label="Custo da sua hora por aula" />
                 </fieldset>
                 <fieldset>
                     <legend>
                         Horários disponíveis
-                        <button>+ Novo horário</button>
+                        <button onClick={addNewScheduleItem}>+ Novo horário</button>
                     </legend>
                     <div className="schedule-item">
                         <Select
@@ -60,10 +71,10 @@ function TeacherForm ()
                                 { value: '6', label: 'Sábado' },
                             ]}
                         />
-                        <Input name="from" label="Das" type="time"/>
-                        <Input name="to" label="Até" type="time"/>
+                        <Input name="from" label="Das" type="time" />
+                        <Input name="to" label="Até" type="time" />
                     </div>
-                    
+
                 </fieldset>
                 <footer>
                     <p>
