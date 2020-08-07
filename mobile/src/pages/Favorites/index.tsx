@@ -12,7 +12,7 @@ function Favorites ()
             <ScrollView
                 style={styles.teacherList}
                 contentContainerStyle={{
-                    paddingHorizontal: 10,
+                    paddingHorizontal: 16,
                     paddingBottom: 24,
                 }}
             >
